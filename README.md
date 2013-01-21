@@ -1,7 +1,6 @@
-shufflix
-========
+#shufflix
 
-You know when you want to watch a random episode from Netflix, but can't figure out which one? No, it's just me? Anyway, here's a thing that does that.
+You know when you want to watch a random episode of TNG, but can't figure out which one, and then you have to go and try to google random episodes, but then you just end up watching The Best Episodes Ever and nothing from season 1? No, it's just me? Anyway, here's a thing that does that.
 
 The deets
 -----
@@ -14,6 +13,5 @@ Todos
 - add the episode description
 - connect to the IMDB API and maybe suggest the "best" and "worst" episodes, rather than purely random 
 
-<3,
------
+### <3,
 monica
