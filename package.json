@@ -8,5 +8,9 @@
   "dependencies": {
     "express": "3.0.5",
     "nodeflix": "*"
+  },
+  "engines": {
+    "node": "0.8.15",
+    "npm": "1.1.66"
   }
 }
