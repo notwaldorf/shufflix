@@ -6,6 +6,12 @@ function hideEverything() {
 
 function makeClickersGo() {
 	$('#search').click(doASearch);
+	$('#what').keypress(function(e) {
+	    if(e.which == 13) {
+	        doASearch();
+		}
+	});
+
 	$('#redisplay').click(displayAnEpisode);
 	$(".a-show").live("click", function () { 
 		var id = this.dataset["num"];
