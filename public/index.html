@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <link href='http://fonts.googleapis.com/css?family=Dosis:400,600,800' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="javascripts/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css" title="default">
+
+  <title>Shufflix</title>
+</head>
+
+<body>
+  <div class="title centered">Gimme an episode, Netflix!</div>
+  <div class="box">
+    <h1>pick a show 
+      <input type="text" id="what" value="doctor who"></input>
+      <a class="go" id="search"> GO</a>
+    </h1>
+    
+    <div id="list-of-shows">
+      <h2>The gnomes are confused. Did you mean...</h2>
+      <ul id="shows"></ul>
+    </div>
+
+    <div id="list-of-eps">
+      <h2>You should watch</h2>
+      <ul id="random"></ul>
+      <h1><a class="go" id="redisplay">I want a different one!</a></h1> 
+    </div>
+
+    <div id="waiting">
+      <h2>The gnomes are looking...Wait for it...</h2>
+    </div>
+
+    <div id="credits">
+      <p>P.S: There's no way to search just against Netflix "tv shows", and there's a result limit, so if you search for "cat" and expect "The Cat in the Hat Knows a Lot About That!", you're doing it wrong.</p>
+      </div>
+  </div>
+  <p class="centered softer">Made with &lt;3 by <a href="https://github.com/notwaldorf" class="link">monica</a> who was tired of picking her own random TNG episode </p>
+  </body>
+
+  <script>
+  (function(){
+    var episodes;
+    hideEverything();
+    makeClickersGo();
+  })();
+  </script>
+</html>	

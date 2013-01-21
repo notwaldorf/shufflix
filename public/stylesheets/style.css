@@ -1,0 +1,110 @@
+body {
+	margin: 0px auto;
+	font-family: 'Dosis', Verdana, sans-serif;
+	background-color: #e1e1e1;
+	background-image: url(http://subtlepatterns.subtlepatterns.netdna-cdn.com/patterns/gray_jean.png);
+	color: #2a2e33;
+}
+
+
+hr {
+	border-top: 1px dashed black;
+	border-bottom: none;
+}
+h1 {
+	padding-bottom: 10px;
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+	letter-spacing: 4px;
+	font-size: 30px;
+}
+
+h2 {
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+	font-size: 20px;
+	font-weight: 400;
+	letter-spacing: 4px;
+	margin: 0px;
+	margin-bottom: 10px;
+	display: block;
+}
+.title {
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+	font-weight: 800;
+	font-size: 60px;
+	letter-spacing: 2px;
+	margin-top: 60px;
+	margin-bottom: 30px;	
+	text-shadow: 0px 1px 1px #fff;
+	color: #2a2e33;
+}
+.softer{
+	color: #C5C0C7;
+}
+ul
+{
+    list-style-type: none;
+}
+
+.box {
+	margin: 0px auto;
+	width: 500px;
+	text-align: center;
+	border: solid #303030 0px;
+	background-color: #f6f6f6;
+	background-color: white;
+	padding: 30px;
+
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+}
+
+#credits {
+	border-top: 1px dashed black;
+	padding-top: 20px;
+	font-size: 13px;
+}
+
+/*************************
+ *  Search bar
+ ************************/
+.go, .go:visited{
+	text-decoration: none;
+	color: black;
+	cursor: pointer;
+}
+
+input[type="text"] {
+	font-size: 20px;
+	font-weight: 600;
+	width: 200px;
+	background-color: white;
+	border: 1px solid black;
+
+	padding: 4px 6px;
+
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+
+	margin-bottom: 10px;
+}
+
+/*************************
+ *  Hacks
+ ************************/
+/* not fighting with default a:link to break everything */
+a, a:visited {
+	color: black;
+	text-decoration: underline;
+}
+a:hover, .go:hover{
+	text-decoration: none;
+	color: #699398;
+}
+.softer a:link, .softer a:visited {
+	color: #C5C0C7;
+	text-decoration: underline;
+}
+.centered {
+	text-align: center;
+}
