@@ -77,21 +77,40 @@ exports.episodes = function(req, res){
       	for (var i = 0; i < episodes.length; i++) {
 	        var title = episodes[i].title.regular;
 	        var link = "";
-	        // wtf netflix
+          var id = episodes[i].id.split(
+            'http://api-public.netflix.com/catalog/titles/programs/')[1];
+
+          // wtf netflix
 	        for (var j = 0; j < episodes[i].link.length; j++) {
 	          if (episodes[i].link[j].title == "web page")
 	          {
-	            link = episodes[i].link[j].href;
-	            break;
-	          }
+	             link = episodes[i].link[j].href;
+	             break;
+            }
 	        }
-	        relevantEpisodes.episodes.push({title:title, url:link});
+	        relevantEpisodes.episodes.push({title:title, url:link, id:id});
       	}
       	console.log("[returned: " + relevantEpisodes.episodes.length + "]");
       	res.json(relevantEpisodes);
   	});
 };
 
+/*
+ * GET synopsis for an episode
+ */
+exports.synopsis = function(req, res){
+  var id = req.query["id"]
+  var country = req.query["country"];
 
+  var url = '/catalog/titles/programs/' + id + "/synopsis"; 
+
+  var params = {country: country};
+  console.log("[find synopsis: " + id + " in " + country + "]")  
+
+  netflixApi.get(url, params).end(function(data) {
+      var json = JSON.parse(data);
+      res.json(json);
+    });
+}
 
 

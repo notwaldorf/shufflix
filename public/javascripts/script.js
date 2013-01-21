@@ -79,6 +79,12 @@ function displayAnEpisode()
 	$('#random li').remove();
 	var randomEpisode = Math.floor(Math.random() * episodes.length)
 
+	$.get('/synopsis', {id:episodes[randomEpisode].id, country:selectedCountry},
+		function(data) {
+			console.log(data);
+			$('#random').append('<li class="synopsis">' + data.synopsis + '</li>')
+		});
+
 	$('#random').append('<li><a target="_blank" href="' + episodes[randomEpisode].url + '">' + 
 		episodes[randomEpisode].title + '</a></li>')
 
