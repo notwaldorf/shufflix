@@ -1,3 +1,8 @@
+// massive hack:
+// i don't want the user to change the country between 
+// searching for a show, and then searching for its episodes (if multiple shows were returned)
+var selectedCountry = "";
+
 function hideEverything() {
 	$('#list-of-shows').hide()
 	$('#list-of-eps').hide()
@@ -22,11 +27,11 @@ function makeClickersGo() {
 function doASearch() {
 	hideEverything()
 	var what = $('#what').val();
-	var country = $("input[name=country]:checked").val();
+	selectedCountry = $("input[name=country]:checked").val();
 	if (what == "")
 		return;
 	$('#waiting').show()
-	$.get('/shows', {title : what, country:country}, dealWithSearchResults);
+	$.get('/shows', {title : what, country:selectedCountry}, dealWithSearchResults);
 }
 
 function dealWithSearchResults(data) {
@@ -62,8 +67,7 @@ function dealWithSearchResults(data) {
 function getMeARandomEpisodeFromShow(id) {
 	$('#waiting').show()
 	$('#list-of-shows').hide()
-	var country = $("input[name=country]:checked").val();
-	$.get('/episodes', { id:id, country:country },
+	$.get('/episodes', { id:id, country:selectedCountry },
 		function(data) {
 			episodes = data.episodes;
 			displayAnEpisode();
