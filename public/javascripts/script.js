@@ -22,10 +22,11 @@ function makeClickersGo() {
 function doASearch() {
 	hideEverything()
 	var what = $('#what').val();
+	var country = $("input[name=country]:checked").val();
 	if (what == "")
 		return;
 	$('#waiting').show()
-	$.get('/shows', {title : what}, dealWithSearchResults);
+	$.get('/shows', {title : what, country:country}, dealWithSearchResults);
 }
 
 function dealWithSearchResults(data) {
@@ -61,7 +62,8 @@ function dealWithSearchResults(data) {
 function getMeARandomEpisodeFromShow(id) {
 	$('#waiting').show()
 	$('#list-of-shows').hide()
-	$.get('/episodes', { id:id },
+	var country = $("input[name=country]:checked").val();
+	$.get('/episodes', { id:id, country:country },
 		function(data) {
 			episodes = data.episodes;
 			displayAnEpisode();

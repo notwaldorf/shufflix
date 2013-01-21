@@ -11,9 +11,13 @@ var netflixApi = new nodeflix({
  */
 
 exports.shows = function(req, res){
-  var params = {term: req.query["title"], max_results: "20"};
+  var country = req.query["country"];
+  var title = req.query["title"];
+
+  console.log("[find show: " + req.query["title"] + " in " + country + "]")
+  
+  var params = {term: title, country: country, max_results: "20"};
   var url = '/catalog/titles';
-  console.log("[find show: " + req.query["title"] + "]")
   var relevantShows = {shows: []};
 
   netflixApi.get(url, params).end(function(data){
@@ -24,7 +28,17 @@ exports.shows = function(req, res){
     for (var i = 0; i < titles.length; i++) {
         var title = titles[i].title.regular;
         var link = titles[i].id;
-        // if one of the links is "episodes" then this is a show
+
+        // if the id contains "series", then it's a proper tv show
+        // but we can also have series without episodes. sigh.
+        // so this doesnt actually work
+        // if (link.indexOf("series") != -1 )
+        // {
+        //   var id = link.split("http://api-public.netflix.com/catalog/titles/series/")[1]
+        //   relevantShows.shows.push({title:title, url:id});    
+        // }
+
+        // if one of the links is "episodes" then this is a show with actual episodes
         for (var j = 0; j < titles[i].link.length; j++) {
           if (titles[i].link[j].title == "episodes")
           {
@@ -46,14 +60,18 @@ exports.shows = function(req, res){
 
 exports.episodes = function(req, res){
 	var showId = req.query["id"]
+  var country = req.query["country"];
+
+  var params = {country: country};
 	var url = '/catalog/titles/series/' + showId + "/episodes"; 
-	console.log("[find episodes: " + showId + "]")
+	console.log("[find episodes: " + showId + " in " + country + "]")  
   
   	var relevantEpisodes = {episodes: []};
 
-  	netflixApi.get(url, {}).end(function(data) {
+  	netflixApi.get(url, params).end(function(data) {
   		var json = JSON.parse(data);
-      	var episodes = json.catalog_titles.catalog_title;
+        var episodes = json.catalog_titles.catalog_title;
+
       	console.log("[api response: " + episodes.length + "]");
 
       	for (var i = 0; i < episodes.length; i++) {
